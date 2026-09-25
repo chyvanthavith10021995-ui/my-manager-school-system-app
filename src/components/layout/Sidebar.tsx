@@ -51,7 +51,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isMobileOpen, onCloseMobile }) => {
-  const { userRole, students, teachers, committees, announcements, censusChildren, preschoolAssessments, studentSupports, schoolActivities, parentMeetingPlans, schoolAssets, t, language } = useApp();
+  const { userRole, students, teachers, committees, announcements, censusChildren, preschoolAssessments, studentSupports, schoolActivities, parentMeetingPlans, schoolAssets, t, language, selectedAcademicYear } = useApp();
 
   const navItems: { id: NavTab; icon: any; badge?: number | string; roles: string[] }[] = [
     { id: 'dashboard', icon: LayoutDashboard, roles: ['admin', 'teacher', 'student', 'parent'] },
@@ -165,7 +165,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isMob
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <div>
                 <p className="text-[11px] font-extrabold text-slate-100">សាលាបឋមសិក្សា អន្លង់តាម៉ី</p>
-                <p className="text-[10px] text-slate-400 font-mono">ឆ្នាំសិក្សា ២០២៦ - ២០២៧</p>
+                <p className="text-[10px] text-amber-400 font-bold font-mono">ឆ្នាំសិក្សា {selectedAcademicYear}</p>
               </div>
             </div>
             <span className="px-2 py-0.5 rounded text-[9px] font-black bg-brand-500/20 text-brand-400 border border-brand-500/30">

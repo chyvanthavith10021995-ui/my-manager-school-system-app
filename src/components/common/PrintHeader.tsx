@@ -14,7 +14,7 @@ export const PrintHeader: React.FC<PrintHeaderProps> = ({
   classNameInfo,
   dateInfo
 }) => {
-  const { schoolInfo } = useApp();
+  const { schoolInfo, selectedAcademicYear } = useApp();
 
   return (
     <div className="hidden print:block mb-6 text-black font-sans">
@@ -26,7 +26,7 @@ export const PrintHeader: React.FC<PrintHeaderProps> = ({
           <div>
             <p className="font-extrabold text-xs text-blue-950 font-siemreap">{schoolInfo.moeysName || 'ក្រសួងអប់រំ យុវជន និងកីឡា'}</p>
             <p className="font-extrabold text-slate-900 font-siemreap">{schoolInfo.nameKhmer || schoolInfo.schoolName || 'សាលាបឋមសិក្សា អន្លង់តាម៉ី'}</p>
-            <p className="text-[11px] text-slate-700 font-siemreap">ឆ្នាំសិក្សា ៖ {schoolInfo.academicYear || '២០២៦ - ២០២៧'}</p>
+            <p className="text-[11px] text-slate-700 font-siemreap">ឆ្នាំសិក្សា ៖ {selectedAcademicYear || schoolInfo.academicYear}</p>
             {classNameInfo && <p className="text-[11px] text-slate-800 font-bold mt-0.5 font-siemreap">ថ្នាក់រៀន ៖ {classNameInfo}</p>}
           </div>
         </div>

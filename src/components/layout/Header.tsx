@@ -17,7 +17,8 @@ import {
   FileText,
   Settings,
   Menu,
-  KeyRound
+  KeyRound,
+  Calendar
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -39,10 +40,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenReports, onOpenSettings, o
     toggleTheme,
     searchQuery,
     setSearchQuery,
+    selectedAcademicYear,
+    setSelectedAcademicYear,
+    availableAcademicYears,
     notifications,
     markNotificationRead,
     clearNotifications,
-    resetDemoData
+    resetDemoData,
+    logActivity
   } = useApp();
 
   const [showNotifications, setShowNotifications] = useState(false);
@@ -95,6 +100,26 @@ export const Header: React.FC<HeaderProps> = ({ onOpenReports, onOpenSettings, o
 
         {/* Header Right Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
+
+          {/* Academic Year Selector Pill */}
+          <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-600 dark:text-amber-400 shrink-0">
+            <Calendar className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+            <span className="hidden md:inline font-extrabold text-[11px]">ឆ្នាំសិក្សា ៖</span>
+            <select
+              value={selectedAcademicYear}
+              onChange={(e) => {
+                setSelectedAcademicYear(e.target.value);
+                logActivity('កែប្រែ (Update)', 'ឆ្នាំសិក្សា (Academic Year)', `បានជ្រើសរើសឆ្នាំសិក្សា ${e.target.value}`);
+              }}
+              className="bg-transparent font-extrabold text-xs text-amber-700 dark:text-amber-300 focus:outline-none cursor-pointer"
+            >
+              {availableAcademicYears.map(yr => (
+                <option key={yr} value={yr} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-bold">
+                  {yr}
+                </option>
+              ))}
+            </select>
+          </div>
 
           {/* Teacher Quick Login Button */}
           {onOpenQuickLogin && (
