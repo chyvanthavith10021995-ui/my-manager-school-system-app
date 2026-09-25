@@ -12,8 +12,16 @@ export default defineConfig({
         // បែងចែកបណ្ណាល័យពី node_modules ឱ្យដាច់ដោយឡែកពីកូដកម្មវិធីយើង
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            // អ្នកអាចបំបែកជា vendor ទូទៅ ឬបែងចែកតាមライブラリ (Library) ធំៗ
-            return 'vendor';
+            if (id.includes('recharts')) {
+              return 'vendor-recharts';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-lucide';
+            }
+            if (id.includes('react/') || id.includes('react-dom/')) {
+              return 'vendor-react';
+            }
+            return 'vendor'; // លំនាំដើមសម្រាប់បណ្ណាល័យផ្សេងៗ
           }
         },
       },
