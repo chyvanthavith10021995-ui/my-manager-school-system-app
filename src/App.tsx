@@ -35,7 +35,7 @@ const AppContent: React.FC = () => {
   const { userRole, students, grades } = useApp();
   const [activeTab, setActiveTab] = useState<NavTab>('dashboard');
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  
+
   // Modals
   const [showAddStudentModal, setShowAddStudentModal] = useState(false);
   const [showAddTeacherModal, setShowAddTeacherModal] = useState(false);
@@ -106,7 +106,7 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans">
-      
+
       {/* Sidebar Navigation */}
       <Sidebar
         activeTab={activeTab}
@@ -117,9 +117,9 @@ const AppContent: React.FC = () => {
 
       {/* Main App Container */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        
+
         {/* Header */}
-        <Header 
+        <Header
           onOpenReports={() => setShowStandardReportsModal(true)}
           onOpenSettings={() => setShowSchoolSettingsModal(true)}
           onOpenSecurity={() => setShowDataSecurityModal(true)}

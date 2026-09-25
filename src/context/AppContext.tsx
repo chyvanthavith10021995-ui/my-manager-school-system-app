@@ -218,6 +218,7 @@ interface AppContextType {
   deleteFinancialTransaction: (id: string) => void;
   addSchoolAsset: (asset: Omit<SchoolAsset, 'id' | 'assetCode'>) => void;
   updateSchoolAsset: (id: string, updated: Partial<SchoolAsset>) => void;
+  deleteSchoolAsset: (id: string) => void;
   // Audit Logs & Security
   auditLogs: AuditLog[];
   logActivity: (action: AuditActionType, targetEntity: string, details: string, status?: 'ជោគជ័យ' | 'បរាជ័យ') => void;
@@ -380,6 +381,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     logActivity('បម្រុងទុក (Backup)', 'ទិន្នន័យសាលាទាំងមូល (Full DB)', 'បានធ្វើការបម្រុងទុកទិន្នន័យ និងទាញយក Encrypted JSON Database Snapshot');
   };
+
+  const [notifications, setNotifications] = useState<AppNotification[]>([
     { id: 'n1', title: 'បានកត់ត្រាវត្តមាន', message: 'វត្តមានសិស្សថ្នាក់ទី ៤-ក បានបច្ចុប្បន្នភាពរួចរាល់។', timestamp: '១០ នាទីមុន', read: false, type: 'info' },
     { id: 'n2', title: 'ទទួលបានការទូទាត់ថ្លៃសិក្សា', message: 'វិក្កយបត្រ INV-KH-2026-002 ត្រូវបានទូទាត់ដោយ សុខ រតនា។', timestamp: '១ ម៉ោងមុន', read: false, type: 'success' },
     { id: 'n3', title: 'កាលវិភាគប្រឡងឆមាស', message: 'កាលវិភាគប្រឡងឆមាសទី១ ត្រូវបានចេញផ្សាយផ្លូវការ។', timestamp: '១ ថ្ងៃមុន', read: true, type: 'warning' }

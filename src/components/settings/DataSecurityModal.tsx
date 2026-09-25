@@ -4,7 +4,6 @@ import {
   ShieldCheck,
   Lock,
   Database,
-  Cloud,
   Key,
   RefreshCw,
   Download,

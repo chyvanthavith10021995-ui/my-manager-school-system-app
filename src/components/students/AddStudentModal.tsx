@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { EquityCardStatus } from '../../types';
 import { useApp } from '../../context/AppContext';
-import { X, UserPlus, User, ShieldCheck, PhoneCall, GraduationCap, CheckCircle2, AlertCircle } from 'lucide-react';
+import { X, UserPlus, User, ShieldCheck, PhoneCall, GraduationCap, AlertCircle } from 'lucide-react';
 import { PhotoUploader } from '../common/PhotoUploader';
 import { ConfirmationModal } from '../common/ConfirmationModal';
 

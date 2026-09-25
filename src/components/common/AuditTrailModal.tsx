@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ShieldCheck, Search, Filter, Download, History, X, CheckCircle, AlertTriangle, UserCheck, Database, Key } from 'lucide-react';
-import type { AuditActionType, UserRole } from '../../types';
+import { Search, Download, History, X } from 'lucide-react';
+import type { AuditActionType } from '../../types';
 
 interface AuditTrailModalProps {
   onClose: () => void;
 }
 
 export const AuditTrailModal: React.FC<AuditTrailModalProps> = ({ onClose }) => {
-  const { auditLogs, userRole } = useApp();
+  const { auditLogs } = useApp();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAction, setSelectedAction] = useState<string>('all');
-  const [selectedRoleFilter, setSelectedRoleFilter] = useState<string>('all');
+  const [selectedRoleFilter] = useState<string>('all');
 
   const filteredLogs = auditLogs.filter((log) => {
     const matchesSearch =
