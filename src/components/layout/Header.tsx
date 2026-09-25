@@ -70,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenReports, onOpenSettings, o
               <Menu className="w-5 h-5 text-brand-600 dark:text-brand-400" />
             </button>
           )}
-          <img src="/school-logo.svg" alt="School Logo" className="w-7 h-7 object-contain drop-shadow" />
+          <img src="/school-logo.png" alt="សាលាបឋមសិក្សា អន្លង់តាម៉ី" className="w-8 h-8 object-contain drop-shadow" />
         </div>
 
         {/* Search Input */}

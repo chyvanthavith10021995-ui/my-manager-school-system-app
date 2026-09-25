@@ -61,6 +61,18 @@ export const SchoolSettingsModal: React.FC<SchoolSettingsModalProps> = ({ onClos
         {/* Form Fields */}
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           
+          {/* Logo Badge Preview */}
+          <div className="p-3.5 bg-gradient-to-r from-brand-600/10 via-indigo-600/10 to-purple-600/10 border border-brand-500/20 rounded-2xl flex items-center gap-4">
+            <img src="/school-logo.png" alt="សាលាបឋមសិក្សា អន្លង់តាម៉ី" className="w-16 h-16 object-contain drop-shadow-md rounded-full bg-white p-1 ring-2 ring-brand-500/30 shrink-0" />
+            <div>
+              <h4 className="font-extrabold text-sm text-slate-900 dark:text-slate-100">សញ្ញាសម្គាល់ផ្លូវការ (Official School Emblem Logo)</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-xs">សាលាបឋមសិក្សា អន្លង់តាម៉ី • ANLONG TAMEY PRIMARY SCHOOL</p>
+              <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                បានបច្ចុប្បន្នភាព Logo ផ្លូវការរួចរាល់
+              </span>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="font-extrabold text-slate-700 dark:text-slate-300 block mb-1">

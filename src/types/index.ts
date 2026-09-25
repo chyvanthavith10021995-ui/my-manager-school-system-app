@@ -33,6 +33,7 @@ export interface Student {
   gpa: number; // e.g. 9.2/10
   rankInClass: number; // e.g. 1 (ចំណាត់ថ្នាក់ទី១)
   attendancePercentage: number;
+  academicYear?: string; // ឆ្នាំសិក្សា e.g. "២០២៦ - ២០២៧"
 }
 
 export type TeacherCategory = 'គ្រូក្របខ័ណ្ឌ' | 'គ្រូកិច្ចសន្យា' | 'គ្រូផ្អែកលើកិច្ចព្រមព្រៀង';

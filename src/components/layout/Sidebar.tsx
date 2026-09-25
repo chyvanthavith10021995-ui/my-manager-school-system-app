@@ -87,8 +87,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isMob
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-purple-600 p-0.5 flex items-center justify-center shadow-lg shadow-brand-500/30 group cursor-pointer overflow-hidden transition-transform duration-300 hover:scale-105">
             <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center overflow-hidden p-0.5">
               <img 
-                src="/school-logo.svg" 
-                alt="School Logo" 
+                src="/school-logo.png" 
+                alt="សាលាបឋមសិក្សា អន្លង់តាម៉ី" 
                 className="w-full h-full object-contain filter drop-shadow transition-transform duration-300 group-hover:scale-110" 
               />
             </div>

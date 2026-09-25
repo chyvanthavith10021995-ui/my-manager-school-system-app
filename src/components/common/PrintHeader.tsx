@@ -20,12 +20,15 @@ export const PrintHeader: React.FC<PrintHeaderProps> = ({
     <div className="hidden print:block mb-6 text-black font-sans">
       {/* MoEYS Royal Header */}
       <div className="flex justify-between items-start mb-4">
-        {/* Left School Info */}
-        <div className="text-left text-xs font-bold leading-relaxed w-1/2">
-          <p className="font-extrabold text-xs text-blue-950 font-siemreap">{schoolInfo.moeysName || 'ក្រសួងអប់រំ យុវជន និងកីឡា'}</p>
-          <p className="font-extrabold text-slate-900 font-siemreap">{schoolInfo.nameKhmer || schoolInfo.schoolName || 'សាលាបឋមសិក្សា អន្លង់តាម៉ី'}</p>
-          <p className="text-[11px] text-slate-700 font-siemreap">ឆ្នាំសិក្សា ៖ {schoolInfo.academicYear || '២០២៦ - ២០២៧'}</p>
-          {classNameInfo && <p className="text-[11px] text-slate-800 font-bold mt-0.5 font-siemreap">ថ្នាក់រៀន ៖ {classNameInfo}</p>}
+        {/* Left School Info & Logo */}
+        <div className="flex items-start gap-3 text-left text-xs font-bold leading-relaxed w-1/2">
+          <img src="/school-logo.png" alt="សាលាបឋមសិក្សា អន្លង់តាម៉ី" className="w-14 h-14 object-contain shrink-0" />
+          <div>
+            <p className="font-extrabold text-xs text-blue-950 font-siemreap">{schoolInfo.moeysName || 'ក្រសួងអប់រំ យុវជន និងកីឡា'}</p>
+            <p className="font-extrabold text-slate-900 font-siemreap">{schoolInfo.nameKhmer || schoolInfo.schoolName || 'សាលាបឋមសិក្សា អន្លង់តាម៉ី'}</p>
+            <p className="text-[11px] text-slate-700 font-siemreap">ឆ្នាំសិក្សា ៖ {schoolInfo.academicYear || '២០២៦ - ២០២៧'}</p>
+            {classNameInfo && <p className="text-[11px] text-slate-800 font-bold mt-0.5 font-siemreap">ថ្នាក់រៀន ៖ {classNameInfo}</p>}
+          </div>
         </div>
 
         {/* Right Kingdom Motto (Top-most: ព្រះរាជាណាចក្រកម្ពុជា, Next: ជាតិ សាសនា ព្រះមហាក្សត្រ - Font Khmer OS Muol Light) */}

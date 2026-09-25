@@ -131,6 +131,11 @@ interface AppContextType {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   
+  // Academic Year State (ទិន្នន័យទាំងអស់គឺផ្អែកលើឆ្នាំសិក្សា)
+  selectedAcademicYear: string;
+  setSelectedAcademicYear: (year: string) => void;
+  availableAcademicYears: string[];
+
   // School Info
   schoolInfo: SchoolInfo;
   updateSchoolInfo: (info: Partial<SchoolInfo>) => void;
@@ -232,6 +237,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return (localStorage.getItem('edupulse_theme') as 'light' | 'dark') || 'dark';
   });
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Academic Year State (ទិន្នន័យទាំងអស់គឺផ្អែកលើឆ្នាំសិក្សា)
+  const availableAcademicYears = [
+    '២០២៦ - ២០២៧ (ចូលរៀនខែ១១ ឆ្នាំ២០២៦)',
+    '២០២៥ - ២០២៦',
+    '២០២៤ - ២០២៥',
+    '២០២៣ - ២០២៤'
+  ];
+
+  const [selectedAcademicYear, setSelectedAcademicYear] = useState<string>(() => {
+    return localStorage.getItem('edupulse_academic_year') || availableAcademicYears[0];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('edupulse_academic_year', selectedAcademicYear);
+  }, [selectedAcademicYear]);
 
   const t = (key: string): string => {
     return translations[language]?.[key] || translations['km']?.[key] || key;
