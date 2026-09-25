@@ -73,6 +73,12 @@ export const PrintFooter: React.FC = () => {
           <p className="text-sm font-bold font-moul">{schoolInfo.principalName}</p>
         </div>
       </div>
+
+      {/* Developer & Version Print Footer Badge */}
+      <div className="mt-8 pt-2 border-t border-slate-300 flex justify-between items-center text-[10px] text-slate-600 font-sans">
+        <span>ប្រព័ន្ធគ្រប់គ្រងសាលាបឋមសិក្សារដ្ឋ Version <strong>v2.5.0</strong> (MoEYS Official Standard)</span>
+        <span>អ្នកបង្កើតប្រព័ន្ធ ៖ <strong>វុិត ជីវន្ថា</strong> (ICT កម្រងអន្លង់តាម៉ី • Tel: <strong>089 340 468</strong>)</span>
+      </div>
     </div>
   );
 };

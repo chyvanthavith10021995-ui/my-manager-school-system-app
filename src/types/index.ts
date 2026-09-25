@@ -350,4 +350,41 @@ export interface SchoolAsset {
   valueRiel?: number;
 }
 
+// 9. ប្រព័ន្ធកត់ត្រាជីវប្រវត្តិប្រតិបត្តិការ (Audit Trail / Activity Log)
+export type AuditActionType =
+  | 'បង្កើត (Create)'
+  | 'កែប្រែ (Update)'
+  | 'លុប (Delete)'
+  | 'នាំចេញ (Export)'
+  | 'ទូទាត់ (Payment)'
+  | 'បម្រុងទុក (Backup)'
+  | 'ចូលប្រើប្រាស់ (Login)'
+  | 'កំណត់សិទ្ធិ (RBAC)';
+
+export interface AuditLog {
+  id: string;
+  userId: string;
+  userName: string;
+  userRole: UserRole;
+  action: AuditActionType;
+  targetEntity: string;
+  details: string;
+  timestamp: string;
+  ipAddress?: string;
+  status: 'ជោគជ័យ' | 'បរាជ័យ';
+}
+
+// 10. Data Backup & Security Settings Configuration
+export interface DataBackupSettings {
+  autoBackupEnabled: boolean;
+  backupFrequency: 'រៀងរាល់ថ្ងៃ (Daily)' | 'រៀងរាល់សប្តាហ៍ (Weekly)' | 'រៀងរាល់ខែ (Monthly)';
+  backupTime: string; // e.g. "00:00 AM"
+  lastBackupDate: string;
+  cloudSyncTarget: 'Supabase' | 'Firebase' | 'PostgreSQL' | 'Local Backup';
+  cloudSyncStatus: 'បានភ្ជាប់ (Connected)' | 'រង់ចាំការភ្ជាប់';
+  httpsEnforced: boolean;
+  passwordHashAlgorithm: 'bcrypt (Salt 12)' | 'Argon2id';
+}
+
+
 

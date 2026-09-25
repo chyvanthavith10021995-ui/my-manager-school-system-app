@@ -23,11 +23,12 @@ import {
 interface HeaderProps {
   onOpenReports?: () => void;
   onOpenSettings?: () => void;
+  onOpenSecurity?: () => void;
   onToggleMobileSidebar?: () => void;
   onOpenQuickLogin?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenReports, onOpenSettings, onToggleMobileSidebar, onOpenQuickLogin }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenReports, onOpenSettings, onOpenSecurity, onToggleMobileSidebar, onOpenQuickLogin }) => {
   const {
     userRole,
     setUserRole,
@@ -161,6 +162,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenReports, onOpenSettings, o
             >
               <FileText className="w-3.5 h-3.5 text-brand-500" />
               <span>របាយការណ៍ស្ដង់ដារ</span>
+            </button>
+          )}
+
+          {/* Security Best Practices & Auto-Backup Button */}
+          {onOpenSecurity && userRole === 'admin' && (
+            <button
+              onClick={onOpenSecurity}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-extrabold text-xs transition-all"
+              title="សុវត្ថិភាព, Auto-Backup & Audit Trail"
+            >
+              <Shield className="w-3.5 h-3.5 text-emerald-500" />
+              <span className="hidden xl:inline">សុវត្ថិភាព & Backup</span>
             </button>
           )}
 

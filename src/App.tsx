@@ -19,6 +19,7 @@ import { AddStudentModal } from './components/students/AddStudentModal';
 import { AddTeacherModal } from './components/teachers/AddTeacherModal';
 import { MoEYSStandardReportsModal } from './components/reports/MoEYSStandardReportsModal';
 import { SchoolSettingsModal } from './components/settings/SchoolSettingsModal';
+import { DataSecurityModal } from './components/settings/DataSecurityModal';
 import { QuickLoginModal } from './components/common/QuickLoginModal';
 
 // Cambodian Education View Imports
@@ -41,6 +42,7 @@ const AppContent: React.FC = () => {
   const [showReportCardModal, setShowReportCardModal] = useState(false);
   const [showStandardReportsModal, setShowStandardReportsModal] = useState(false);
   const [showSchoolSettingsModal, setShowSchoolSettingsModal] = useState(false);
+  const [showDataSecurityModal, setShowDataSecurityModal] = useState(false);
   const [showQuickLoginModal, setShowQuickLoginModal] = useState(false);
 
   // Render view based on role and tab
@@ -120,6 +122,7 @@ const AppContent: React.FC = () => {
         <Header 
           onOpenReports={() => setShowStandardReportsModal(true)}
           onOpenSettings={() => setShowSchoolSettingsModal(true)}
+          onOpenSecurity={() => setShowDataSecurityModal(true)}
           onToggleMobileSidebar={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
           onOpenQuickLogin={() => setShowQuickLoginModal(true)}
         />
@@ -156,6 +159,10 @@ const AppContent: React.FC = () => {
 
       {showSchoolSettingsModal && (
         <SchoolSettingsModal onClose={() => setShowSchoolSettingsModal(false)} />
+      )}
+
+      {showDataSecurityModal && (
+        <DataSecurityModal onClose={() => setShowDataSecurityModal(false)} />
       )}
 
       {showQuickLoginModal && (

@@ -177,6 +177,21 @@ export const SchoolSettingsModal: React.FC<SchoolSettingsModalProps> = ({ onClos
             </div>
           </div>
 
+          {/* System Developer & Version Credit */}
+          <div className="p-3.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700/80 flex items-center justify-between text-xs font-sans">
+            <div>
+              <p className="font-extrabold text-slate-900 dark:text-slate-100">
+                អ្នកបង្កើតប្រព័ន្ធ ៖ <span className="text-amber-600 dark:text-amber-400">វុិត ជីវន្ថា</span> (ICT កម្រងអន្លង់តាម៉ី)
+              </p>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                លេខទូរស័ព្ទទំនាក់ទំនង ៖ <a href="tel:089340468" className="font-bold text-brand-600 dark:text-brand-400 hover:underline">089 340 468</a>
+              </p>
+            </div>
+            <span className="px-3 py-1 rounded-xl text-xs font-black bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20">
+              Version v2.5.0
+            </span>
+          </div>
+
           {/* Form Action */}
           <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-200 dark:border-slate-800">
             <button

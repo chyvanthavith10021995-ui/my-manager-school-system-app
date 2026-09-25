@@ -2304,3 +2304,78 @@ export const initialSchoolAssets: SchoolAsset[] = [
   }
 ];
 
+export const initialAuditLogs: import('../types').AuditLog[] = [
+  {
+    id: 'log-101',
+    userId: 'u-001',
+    userName: 'លោកនាយក ឈិត សារ៉ាំ',
+    userRole: 'admin',
+    action: 'ចូលប្រើប្រាស់ (Login)',
+    targetEntity: 'ប្រព័ន្ធគ្រប់គ្រងសាលាបឋមសិក្សា',
+    details: 'បានចូលប្រើប្រាស់ប្រព័ន្ធដោយជោគជ័យតាមរយៈ HTTPS',
+    timestamp: '២០២៦-០៩-២៥ ១៦:៤៥:០០',
+    ipAddress: '192.168.1.10',
+    status: 'ជោគជ័យ'
+  },
+  {
+    id: 'log-102',
+    userId: 'u-001',
+    userName: 'លោកនាយក ឈិត សារ៉ាំ',
+    userRole: 'admin',
+    action: 'បង្កើត (Create)',
+    targetEntity: 'សិស្ស ឡុង សុវណ្ណារ៉ា (ALT-2026-101)',
+    details: 'បានចុះឈ្មោះសិស្សថ្មីចូល ថ្នាក់ទី ១-ក និងផ្ទៀងផ្ទាត់ទិន្នន័យ Form',
+    timestamp: '២០២៦-០៩-២៥ ១៦:៣០:១២',
+    ipAddress: '192.168.1.10',
+    status: 'ជោគជ័យ'
+  },
+  {
+    id: 'log-103',
+    userId: 'u-002',
+    userName: 'លោកគ្រូ ស៊ឹម សុផល',
+    userRole: 'teacher',
+    action: 'កែប្រែ (Update)',
+    targetEntity: 'សៀវភៅពិន្ទុថ្នាក់ទី ៤-ក (ខែកញ្ញា)',
+    details: 'បានបញ្ចូល និងរក្សាទុកពិន្ទុ ១៣ មុខវិជ្ជាសម្រាប់សិស្ស ៣២ នាក់',
+    timestamp: '២០២៦-០៩-២៥ ១៥:១៥:៤០',
+    ipAddress: '192.168.1.24',
+    status: 'ជោគជ័យ'
+  },
+  {
+    id: 'log-104',
+    userId: 'u-001',
+    userName: 'លោកនាយក ឈិត សារ៉ាំ',
+    userRole: 'admin',
+    action: 'បម្រុងទុក (Backup)',
+    targetEntity: 'ទិន្នន័យសាលា (Auto-Backup Daily)',
+    details: 'ប្រព័ន្ធបានធ្វើ Auto-Backup Database និង Encrypted JSON រួចរាល់',
+    timestamp: '២០២៦-០៩-២៥ ០០:០០:០០',
+    ipAddress: '127.0.0.1 (System)',
+    status: 'ជោគជ័យ'
+  },
+  {
+    id: 'log-105',
+    userId: 'u-001',
+    userName: 'លោកនាយក ឈិត សារ៉ាំ',
+    userRole: 'admin',
+    action: 'កំណត់សិទ្ធិ (RBAC)',
+    targetEntity: 'លោកគ្រូ ហេង ពិសិដ្ឋ',
+    details: 'បានកំណត់សិទ្ធិ Role-Based Access: គ្រូបន្ទុកថ្នាក់ទី ៦-ក',
+    timestamp: '២០២៦-០៩-២៤ ០៩:២០:១១',
+    ipAddress: '192.168.1.10',
+    status: 'ជោគជ័យ'
+  }
+];
+
+export const initialBackupSettings: import('../types').DataBackupSettings = {
+  autoBackupEnabled: true,
+  backupFrequency: 'រៀងរាល់ថ្ងៃ (Daily)',
+  backupTime: '00:00 AM',
+  lastBackupDate: '2026-09-25 00:00:00',
+  cloudSyncTarget: 'Supabase',
+  cloudSyncStatus: 'បានភ្ជាប់ (Connected)',
+  httpsEnforced: true,
+  passwordHashAlgorithm: 'bcrypt (Salt 12)'
+};
+
+

@@ -157,17 +157,37 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isMob
         })}
       </nav>
 
-      {/* Footer System Status */}
-      <div className="p-4 border-t border-slate-800 bg-slate-950/50">
-        <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <div>
-              <p className="text-[11px] font-semibold text-slate-200">សាលាបឋមសិក្សា អន្លង់តាម៉ី</p>
-              <p className="text-[10px] text-slate-400">ឆ្នាំសិក្សា ២០២៥ - ២០២៦</p>
+      {/* Footer System Status & Developer Info */}
+      <div className="p-4 border-t border-slate-800 bg-slate-950/80 space-y-2">
+        <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <div>
+                <p className="text-[11px] font-extrabold text-slate-100">សាលាបឋមសិក្សា អន្លង់តាម៉ី</p>
+                <p className="text-[10px] text-slate-400 font-mono">ឆ្នាំសិក្សា ២០២៦ - ២០២៧</p>
+              </div>
             </div>
+            <span className="px-2 py-0.5 rounded text-[9px] font-black bg-brand-500/20 text-brand-400 border border-brand-500/30">
+              v2.5.0
+            </span>
           </div>
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+
+          {/* System Developer Credit */}
+          <div className="pt-1 space-y-1 text-[10px] text-slate-400 font-sans">
+            <p className="font-bold text-slate-300 flex items-center justify-between">
+              <span>អ្នកបង្កើតប្រព័ន្ធ ៖</span>
+              <span className="text-amber-400 font-extrabold">វុិត ជីវន្ថា</span>
+            </p>
+            <p className="text-slate-400 flex items-center justify-between text-[9.5px]">
+              <span>អង្គភាព ៖</span>
+              <span className="text-slate-300 font-semibold">ICT កម្រងអន្លង់តាម៉ី</span>
+            </p>
+            <p className="text-slate-400 flex items-center justify-between text-[9.5px]">
+              <span>ទំនាក់ទំនង ៖</span>
+              <a href="tel:089340468" className="text-brand-400 font-bold hover:underline">089 340 468</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

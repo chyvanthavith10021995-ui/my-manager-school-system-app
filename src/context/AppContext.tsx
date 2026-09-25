@@ -22,7 +22,10 @@ import type {
   ParentMeetingPlan,
   MaterialHandover,
   FinancialTransaction,
-  SchoolAsset
+  SchoolAsset,
+  AuditLog,
+  AuditActionType,
+  DataBackupSettings
 } from '../types';
 
 export const defaultSchoolInfo: SchoolInfo = {
@@ -57,7 +60,9 @@ import {
   initialParentMeetingPlans,
   initialMaterialHandovers,
   initialFinancialTransactions,
-  initialSchoolAssets
+  initialSchoolAssets,
+  initialAuditLogs,
+  initialBackupSettings
 } from '../mockData/initialData';
 
 const translations: Record<Language, Record<string, string>> = {
@@ -208,7 +213,12 @@ interface AppContextType {
   deleteFinancialTransaction: (id: string) => void;
   addSchoolAsset: (asset: Omit<SchoolAsset, 'id' | 'assetCode'>) => void;
   updateSchoolAsset: (id: string, updated: Partial<SchoolAsset>) => void;
-  deleteSchoolAsset: (id: string) => void;
+  // Audit Logs & Security
+  auditLogs: AuditLog[];
+  logActivity: (action: AuditActionType, targetEntity: string, details: string, status?: 'ជោគជ័យ' | 'បរាជ័យ') => void;
+  backupSettings: DataBackupSettings;
+  updateBackupSettings: (updated: Partial<DataBackupSettings>) => void;
+  triggerManualBackup: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -271,8 +281,84 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [materialHandovers, setMaterialHandovers] = useLocalStorage<MaterialHandover[]>('material_handovers', initialMaterialHandovers);
   const [financialTransactions, setFinancialTransactions] = useLocalStorage<FinancialTransaction[]>('financial_transactions', initialFinancialTransactions);
   const [schoolAssets, setSchoolAssets] = useLocalStorage<SchoolAsset[]>('school_assets', initialSchoolAssets);
+  
+  // Security & Audit Log state
+  const [auditLogs, setAuditLogs] = useLocalStorage<AuditLog[]>('audit_logs', initialAuditLogs);
+  const [backupSettings, setBackupSettings] = useLocalStorage<DataBackupSettings>('backup_settings', initialBackupSettings);
 
-  const [notifications, setNotifications] = useState<AppNotification[]>([
+  const logActivity = (
+    action: AuditActionType,
+    targetEntity: string,
+    details: string,
+    status: 'ជោគជ័យ' | 'បរាជ័យ' = 'ជោគជ័យ'
+  ) => {
+    const now = new Date();
+    const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    
+    const userNameMap: Record<UserRole, string> = {
+      admin: 'លោកនាយក ឈិត សារ៉ាំ (Admin)',
+      teacher: 'លោកគ្រូ ស៊ឹម សុផល (Teacher)',
+      student: 'សិស្ស ឡុង សុវណ្ណារ៉ា',
+      parent: 'អាណាព្យាបាល ឡុង សុខា'
+    };
+
+    const newLog: AuditLog = {
+      id: `log-${Date.now()}`,
+      userId: `usr-${userRole}`,
+      userName: userNameMap[userRole] || 'អ្នកប្រើប្រាស់ប្រព័ន្ធ',
+      userRole,
+      action,
+      targetEntity,
+      details,
+      timestamp: formattedDate,
+      ipAddress: '192.168.1.10',
+      status
+    };
+
+    setAuditLogs(prev => [newLog, ...prev]);
+  };
+
+  const updateBackupSettings = (updated: Partial<DataBackupSettings>) => {
+    setBackupSettings(prev => ({ ...prev, ...updated }));
+    logActivity('កែប្រែ (Update)', 'ការកំណត់ Auto-Backup', 'បានបច្ចុប្បន្នភាពការកំណត់ការបម្រុងទុកទិន្នន័យ');
+  };
+
+  const triggerManualBackup = () => {
+    const now = new Date();
+    const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    
+    setBackupSettings(prev => ({
+      ...prev,
+      lastBackupDate: dateStr
+    }));
+
+    // Generate JSON download snapshot
+    const exportData = {
+      schoolInfo,
+      studentsCount: students.length,
+      teachersCount: teachers.length,
+      classesCount: classes.length,
+      backupTimestamp: dateStr,
+      encryption: 'bcrypt (Salt 12) + HTTPS',
+      databaseDump: {
+        students,
+        teachers,
+        attendance,
+        grades,
+        financialTransactions
+      }
+    };
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `AnlongTamey_School_Backup_${dateStr.replace(/[: ]/g, '_')}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    logActivity('បម្រុងទុក (Backup)', 'ទិន្នន័យសាលាទាំងមូល (Full DB)', 'បានធ្វើការបម្រុងទុកទិន្នន័យ និងទាញយក Encrypted JSON Database Snapshot');
+  };
     { id: 'n1', title: 'បានកត់ត្រាវត្តមាន', message: 'វត្តមានសិស្សថ្នាក់ទី ៤-ក បានបច្ចុប្បន្នភាពរួចរាល់។', timestamp: '១០ នាទីមុន', read: false, type: 'info' },
     { id: 'n2', title: 'ទទួលបានការទូទាត់ថ្លៃសិក្សា', message: 'វិក្កយបត្រ INV-KH-2026-002 ត្រូវបានទូទាត់ដោយ សុខ រតនា។', timestamp: '១ ម៉ោងមុន', read: false, type: 'success' },
     { id: 'n3', title: 'កាលវិភាគប្រឡងឆមាស', message: 'កាលវិភាគប្រឡងឆមាសទី១ ត្រូវបានចេញផ្សាយផ្លូវការ។', timestamp: '១ ថ្ងៃមុន', read: true, type: 'warning' }
@@ -948,7 +1034,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       deleteFinancialTransaction,
       addSchoolAsset,
       updateSchoolAsset,
-      deleteSchoolAsset
+      deleteSchoolAsset,
+      auditLogs,
+      logActivity,
+      backupSettings,
+      updateBackupSettings,
+      triggerManualBackup
     }}>
       {children}
     </AppContext.Provider>

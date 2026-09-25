@@ -4,6 +4,7 @@ import type { Student } from '../../types';
 import { ExcelImportModal } from './ExcelImportModal';
 import { TransferStudentModal } from './TransferStudentModal';
 import { EditStudentModal } from './EditStudentModal';
+import { ConfirmationModal } from '../common/ConfirmationModal';
 import { PrintHeader, PrintFooter } from '../common/PrintHeader';
 import {
   UserPlus,
@@ -27,13 +28,14 @@ interface StudentManagementProps {
 }
 
 export const StudentManagement: React.FC<StudentManagementProps> = ({ onOpenAddModal }) => {
-  const { students, deleteStudent, userRole, searchQuery, language, schoolInfo } = useApp();
+  const { students, deleteStudent, userRole, searchQuery, language, schoolInfo, logActivity } = useApp();
   const [selectedGrade, setSelectedGrade] = useState<string>('All');
   const [selectedSection, setSelectedSection] = useState<string>('All');
   const [selectedEquity, setSelectedEquity] = useState<string>('All');
   const [selectedStatus, setSelectedStatus] = useState<string>('All');
   const [viewingProfile, setViewingProfile] = useState<Student | null>(null);
   const [editingStudent, setEditingStudent] = useState<Student | null>(null);
+  const [deletingStudent, setDeletingStudent] = useState<Student | null>(null);
   const [showExcelModal, setShowExcelModal] = useState(false);
   const [transferringStudent, setTransferringStudent] = useState<Student | null>(null);
   const [showTransferModal, setShowTransferModal] = useState(false);
@@ -340,11 +342,7 @@ export const StudentManagement: React.FC<StudentManagementProps> = ({ onOpenAddM
                               <Edit3 className="w-4 h-4" />
                             </button>
                             <button
-                              onClick={() => {
-                                if (confirm(`លុបសិស្ស ${student.lastName} ${student.firstName} ចេញពីបញ្ជី?`)) {
-                                  deleteStudent(student.id);
-                                }
-                              }}
+                              onClick={() => setDeletingStudent(student)}
                               className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
                               title="លុបសិស្ស"
                             >
@@ -542,6 +540,28 @@ export const StudentManagement: React.FC<StudentManagementProps> = ({ onOpenAddM
 
         <PrintFooter />
       </div>
+
+      {/* Confirmation Modal for Student Deletion */}
+      <ConfirmationModal
+        isOpen={Boolean(deletingStudent)}
+        title="តើអ្នកប្រាកដជាចង់លុបទិន្នន័យសិស្សនេះមែនទេ?"
+        message={`ទិន្នន័យសិស្ស ${deletingStudent?.lastName} ${deletingStudent?.firstName} (${deletingStudent?.studentId}) នឹងត្រូវលុបចេញពីប្រព័ន្ធ។ ប្រតិបត្តិការនេះនឹងត្រូវកត់ត្រាចូល Audit Trail។`}
+        confirmText="លុបទិន្នន័យសិស្ស"
+        cancelText="បោះបង់"
+        variant="danger"
+        onConfirm={() => {
+          if (deletingStudent) {
+            deleteStudent(deletingStudent.id);
+            logActivity(
+              'លុប (Delete)',
+              `សិស្ស ${deletingStudent.lastName} ${deletingStudent.firstName}`,
+              `បានលុបទិន្នន័យសិស្ស ${deletingStudent.studentId} ចេញពីប្រព័ន្ធ`
+            );
+            setDeletingStudent(null);
+          }
+        }}
+        onCancel={() => setDeletingStudent(null)}
+      />
 
     </div>
   );
