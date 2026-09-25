@@ -1199,7 +1199,7 @@ export const initialCommittees: CommitteeMember[] = [
     email: 'long.sovannara@anlongtamey.edu.kh',
     avatar: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=250&q=80',
     joinedYear: '២០២៥',
-    education: 'កំពុងសិក្សាថ្នាក់ទី៦ (ចំណាត់ថ្នាក់ទី១)',
+    education: 'កំពុងសិក្សាថ្នាក់ទី៦ (ចំណាត់ថ្នាក់១)',
     biography: 'សិស្ស ឡុង សុវណ្ណារ៉ា ជាប្រធានក្រុមប្រឹក្សាកុមារសាលាបឋមសិក្សា អន្លង់តាម៉ី។ សុវណ្ណារ៉ា ជាសិស្សពូកែគំរូ ទទួលបានបណ្ណសរសើរថ្នាក់ខេត្ត និងជាតំណាងសំឡេងសិស្សានុសិស្សទាំងអស់ក្នុងប្រជុំ គគស។',
     responsibilities: [
       'នាំយកមតិ និងសំណូមពររបស់សិស្សានុសិស្សជូនគណៈគ្រប់គ្រង',

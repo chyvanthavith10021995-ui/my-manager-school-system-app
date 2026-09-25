@@ -57,23 +57,21 @@ export const PrintFooter: React.FC = () => {
   return (
     <div className="hidden print:block mt-8 pt-4 text-xs font-siemreap text-black">
       <div className="flex justify-between items-start text-center">
-        {/* Left: Prepared By / Teacher */}
+        {/* Left: Principal Annotation ("បានឃើញ និងឯកភាព" នាយកសាលា) */}
+        <div>
+          <p className="font-moul font-bold text-sm mb-1">បានឃើញ និងឯកភាព</p>
+          <p className="mb-14 text-[11px] text-slate-600">
+            ថ្ងៃទី...... ខែ...... ឆ្នាំ២០២៦
+          </p>
+        </div>
+
+        {/* Right: Prepared By / Teacher */}
         <div>
           <p className="mb-1 text-[11px] text-slate-600">
             ធ្វើនៅ អន្លង់តាម៉ី, ថ្ងៃទី...... ខែ...... ឆ្នាំ២០២៦
           </p>
           <p className="mb-14 font-extrabold font-moul">អ្នករៀបចំ / គ្រូបន្ទុកថ្នាក់</p>
           <p className="text-[11px] font-bold text-slate-700">..................................................</p>
-        </div>
-
-        {/* Right: Principal Annotation ("បានឃើញ និងឯកភាព" នាយកសាលា) */}
-        <div>
-          <p className="font-moul font-bold text-sm mb-1">បានឃើញ និងឯកភាព</p>
-          <p className="mb-1 text-[11px] text-slate-600">
-            ថ្ងៃទី...... ខែ...... ឆ្នាំ២០២៦
-          </p>
-          <p className="mb-14 font-extrabold font-moul text-sm">នាយកសាលាបឋមសិក្សា អន្លង់តាម៉ី</p>
-          <p className="text-sm font-bold font-moul">{schoolInfo.principalName}</p>
         </div>
       </div>
 

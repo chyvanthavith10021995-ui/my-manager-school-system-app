@@ -31,7 +31,7 @@ export interface Student {
   transferNotes?: string; // កត់ត្រាការផ្ទេសិស្ស
   transferDate?: string;
   gpa: number; // e.g. 9.2/10
-  rankInClass: number; // e.g. 1 (ចំណាត់ថ្នាក់ទី១)
+  rankInClass: number; // e.g. 1 (ចំណាត់ថ្នាក់១)
   attendancePercentage: number;
   academicYear?: string; // ឆ្នាំសិក្សា e.g. "២០២៦ - ២០២៧"
 }

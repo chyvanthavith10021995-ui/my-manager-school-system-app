@@ -387,7 +387,7 @@ export const MoEYSStandardReportsModal: React.FC<MoEYSStandardReportsModalProps>
             <div className="space-y-4 font-sans text-xs">
               <div className="flex items-center justify-between">
                 <h4 className="font-extrabold text-sm text-slate-800 dark:text-slate-200">
-                  តារាងកិត្តិយសសិស្សពូកែប្រចាំសាលា (ចំណាត់ថ្នាក់ទី១, ទី២, ទី៣ តាមថ្នាក់)
+                  តារាងកិត្តិយសសិស្សពូកែប្រចាំសាលា (ចំណាត់ថ្នាក់១, ទី២, ទី៣ តាមថ្នាក់)
                 </h4>
                 <span className="font-bold text-amber-600">
                   សរុប {students.filter(s => s.rankInClass <= 3).length} នាក់

@@ -54,7 +54,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ onOpenReport
               </tr>
               <tr className="border border-slate-300">
                 <td className="p-2 border border-slate-300 font-bold">មធ្យមភាគពិន្ទុ និងចំណាត់ថ្នាក់</td>
-                <td className="p-2 border border-slate-300 font-bold text-blue-900">{student.gpa.toFixed(1)} / ១០ (ចំណាត់ថ្នាក់ទី {student.rankInClass})</td>
+                <td className="p-2 border border-slate-300 font-bold text-blue-900">{student.gpa.toFixed(1)} / ១០ (ចំណាត់ថ្នាក់ {student.rankInClass})</td>
               </tr>
               <tr className="border border-slate-300">
                 <td className="p-2 border border-slate-300 font-bold">អត្រាវត្តមានសិក្សា</td>
@@ -118,7 +118,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ onOpenReport
             <p className="text-xs font-semibold text-slate-400">មធ្យមភាគពិន្ទុរួម</p>
             <h3 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100 mt-1">{student.gpa.toFixed(1)} / ១០</h3>
             <span className="text-[11px] font-bold text-emerald-500 flex items-center gap-1 mt-1">
-              <TrendingUp className="w-3 h-3" /> ចំណាត់ថ្នាក់ទី {student.rankInClass} ប្រចាំថ្នាក់
+              <TrendingUp className="w-3 h-3" /> ចំណាត់ថ្នាក់ {student.rankInClass} ប្រចាំថ្នាក់
             </span>
           </div>
           <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">

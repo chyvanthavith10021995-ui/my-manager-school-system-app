@@ -114,7 +114,7 @@ export const ReportCardModal: React.FC<ReportCardModalProps> = ({
             </div>
             <div>
               <p className="text-[10px] font-bold text-slate-500 uppercase">ចំណាត់ថ្នាក់ប្រចាំ{monthName}</p>
-              <p className="font-extrabold text-emerald-600 text-sm">ចំណាត់ថ្នាក់ទី {rank}</p>
+              <p className="font-extrabold text-emerald-600 text-sm">ចំណាត់ថ្នាក់ {rank}</p>
             </div>
             <div>
               <p className="text-[10px] font-bold text-slate-500 uppercase">មធ្យមភាគពិន្ទុ / Monthly Avg</p>
@@ -165,7 +165,7 @@ export const ReportCardModal: React.FC<ReportCardModalProps> = ({
             </div>
             <div>
               <p className="text-[10px] uppercase font-bold text-slate-400">ចំណាត់ថ្នាក់ប្រចាំថ្នាក់</p>
-              <p className="text-base font-extrabold text-amber-400">ចំណាត់ថ្នាក់ទី {rank}</p>
+              <p className="text-base font-extrabold text-amber-400">ចំណាត់ថ្នាក់ {rank}</p>
             </div>
             <div className="text-right">
               <p className="text-[10px] uppercase font-bold text-slate-400">លទ្ធផលរួម (Overall Result)</p>
