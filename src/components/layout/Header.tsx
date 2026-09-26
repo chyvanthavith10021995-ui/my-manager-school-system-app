@@ -64,6 +64,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenReports, onOpenSettings, o
     <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 px-4 lg:px-8 py-3 transition-colors">
       <div className="flex items-center justify-between gap-3">
         
+        {/* Desktop Logo */}
+        <div className="hidden lg:flex items-center gap-3 pr-4 border-r border-slate-200 dark:border-slate-700/80 mr-2">
+          <img src="/logo.jpg" alt="Logo" className="w-9 h-9 rounded-lg object-contain shadow-sm" />
+          <span className="font-extrabold text-sm text-slate-800 dark:text-slate-200 hidden xl:block">សាលាបឋមសិក្សា អន្លង់តាម៉ី</span>
+        </div>
+
         {/* Mobile Hamburger & Logo Header */}
         <div className="flex items-center gap-2 lg:hidden">
           {onToggleMobileSidebar && (

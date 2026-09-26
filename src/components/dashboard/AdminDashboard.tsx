@@ -132,6 +132,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 p-6 sm:p-8 text-white shadow-xl shadow-brand-500/10 no-print">
         <div className="absolute right-0 top-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/10 blur-2xl pointer-events-none" />
         <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <img src="/logo.jpg" alt="School Logo" className="w-16 h-16 rounded-xl shadow-md border-2 border-white/20 hidden sm:block object-cover" />
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md border border-white/30 text-white">
@@ -145,6 +147,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <p className="text-sm text-brand-100 mt-1 max-w-xl">
               ប្រព័ន្ធគ្រប់គ្រងសាលារៀនស្ដង់ដារ៖ ថ្នាក់រៀនកម្រិតបឋម (ថ្នាក់ទី១ ដល់ ថ្នាក់ទី៦) ត្រូវបានញែកតាមបន្ទប់ (ក/ខ) និងចាត់តាំងគ្រូបន្ទុកថ្នាក់រួចរាល់។
             </p>
+          </div>
           </div>
 
           {/* Quick Actions */}

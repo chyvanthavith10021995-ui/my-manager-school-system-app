@@ -76,7 +76,7 @@ export const QuickLoginModal: React.FC<QuickLoginModalProps> = ({ onClose }) => 
         {/* School Info Banner */}
         <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Building2 className="w-8 h-8 text-brand-500 shrink-0" />
+            <img src="/logo.jpg" alt="School Logo" className="w-10 h-10 rounded-lg shadow-sm border border-slate-200/50" />
             <div>
               <h3 className="text-xs font-black text-slate-900 dark:text-slate-100">{schoolInfo.schoolName}</h3>
               <p className="text-[11px] text-slate-500">កូដសាលារៀន ៖ {schoolInfo.schoolCode} • ឆ្នាំសិក្សា {schoolInfo.academicYear}</p>
