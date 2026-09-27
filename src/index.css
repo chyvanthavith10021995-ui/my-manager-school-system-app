@@ -17,11 +17,10 @@
 }
 
 @utility glass-card {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border-radius: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
 }
 
 /* Official MoEYS Khmer Typography Classes */
@@ -34,31 +33,30 @@
 }
 
 .dark .glass-card {
-  background-color: rgba(15, 23, 42, 0.8);
-  border-color: rgba(30, 41, 59, 0.8);
+  background-color: #1e293b;
+  border-color: #334155;
 }
 
 @utility glass-card-hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border-radius: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
   transition: all 0.2s ease-in-out;
 }
 
 .dark .glass-card-hover {
-  background-color: rgba(15, 23, 42, 0.8);
-  border-color: rgba(30, 41, 59, 0.8);
+  background-color: #1e293b;
+  border-color: #334155;
 }
 
 .glass-card-hover:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  border-color: #7cc5fb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
 }
 
 .dark .glass-card-hover:hover {
-  border-color: #0154a3;
+  border-color: #475569;
 }
 
 /* Custom Scrollbars */

@@ -5,8 +5,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     // បង្កើនកម្រិតកំណត់កុំឱ្យចេញ Warning (គិតជា kB)
-    chunkSizeWarningLimit: 1600, 
-    
+    chunkSizeWarningLimit: 1600,
+
     rollupOptions: {
       output: {
         // បែងចែកបណ្ណាល័យពី node_modules ឱ្យដាច់ដោយឡែកពីកូដកម្មវិធីយើង
