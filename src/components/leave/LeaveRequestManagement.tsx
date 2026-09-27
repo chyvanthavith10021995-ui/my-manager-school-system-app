@@ -3,7 +3,8 @@ import { useApp } from '../../context/AppContext';
 import { CalendarRange } from 'lucide-react';
 
 export const LeaveRequestManagement: React.FC = () => {
-  const { leaveRequests } = useApp();
+  const context = useApp();
+  const leaveRequests = (context as any)?.leaveRequests || [];
 
   return (
     <div className="p-6 space-y-6">
@@ -29,18 +30,17 @@ export const LeaveRequestManagement: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {leaveRequests.map(req => (
+            {leaveRequests.map((req: any) => (
               <tr key={req.id} className="border-b border-slate-100 dark:border-slate-800">
                 <td className="p-4 text-slate-900 dark:text-slate-100 font-medium">{req.leaveType}</td>
                 <td className="p-4 text-slate-600 dark:text-slate-400 capitalize">{req.requesterRole}</td>
                 <td className="p-4 text-slate-600 dark:text-slate-400">{req.startDate} ដល់ {req.endDate}</td>
                 <td className="p-4 text-slate-600 dark:text-slate-400 max-w-xs truncate">{req.reason}</td>
                 <td className="p-4">
-                  <span className={`px-2 py-1 text-xs font-bold rounded-full ${
-                    req.status === 'អនុម័ត' ? 'bg-emerald-100 text-emerald-700' :
-                    req.status === 'បដិសេធ' ? 'bg-red-100 text-red-700' :
-                    'bg-amber-100 text-amber-700'
-                  }`}>
+                  <span className={`px-2 py-1 text-xs font-bold rounded-full ${req.status === 'APPROVED' || req.status === 'អនុម័ត' ? 'bg-emerald-100 text-emerald-700' :
+                      req.status === 'REJECTED' || req.status === 'បដិសេធ' ? 'bg-red-100 text-red-700' :
+                        'bg-amber-100 text-amber-700'
+                    }`}>
                     {req.status}
                   </span>
                 </td>
