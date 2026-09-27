@@ -4,12 +4,12 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    // បង្កើនកម្រិតកំណត់កុំឱ្យចេញ Warning (គិតជា kB)
-    chunkSizeWarningLimit: 1600,
+    // កំណត់កម្រិត Warning ត្រឹម 1000kB បន្ទាប់ពីធ្វើការ Optimization
+    chunkSizeWarningLimit: 1000,
 
     rollupOptions: {
       output: {
-        // បែងចែកបណ្ណាល័យពី node_modules ឱ្យដាច់ដោយឡែកពីកូដកម្មវិធីយើង
+        // បែងចែក Bundle ជា Chunks ផ្សេងៗគ្នា តាម Folder ដើម្បីឱ្យ Load បានលឿន និងគ្មាន Warning
         manualChunks(id) {
           if (id.includes('node_modules')) {
             if (id.includes('recharts')) {
@@ -18,10 +18,20 @@ export default defineConfig({
             if (id.includes('lucide-react')) {
               return 'vendor-lucide';
             }
-            if (id.includes('react/') || id.includes('react-dom/')) {
+            if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react';
             }
-            return 'vendor'; // លំនាំដើមសម្រាប់បណ្ណាល័យផ្សេងៗ
+            return 'vendor-core';
+          }
+          if (id.includes('src/mockData')) {
+            return 'app-mockdata';
+          }
+          if (id.includes('src/components/')) {
+            const match = id.match(/src\/components\/([^/]+)/);
+            if (match && match[1]) {
+              return `comp-${match[1]}`;
+            }
+            return 'app-components';
           }
         },
       },
