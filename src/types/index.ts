@@ -387,5 +387,48 @@ export interface DataBackupSettings {
   passwordHashAlgorithm: 'bcrypt (Salt 12)' | 'Argon2id';
 }
 
+// 11. Library Management (គ្រប់គ្រងបណ្ណាល័យ)
+export interface LibraryBook {
+  id: string;
+  bookCode: string;
+  title: string;
+  author: string;
+  category: 'រឿងនិទាន' | 'សៀវភៅសិក្សាគោល' | 'ឯកសារយោង' | 'ប្រវត្តិសាស្ត្រ' | 'វិទ្យាសាស្ត្រ';
+  totalCopies: number;
+  availableCopies: number;
+}
 
+export interface LibraryBorrowRecord {
+  id: string;
+  bookId: string;
+  studentId: string; // The ID of the student borrowing
+  borrowDate: string;
+  dueDate: string;
+  returnDate?: string;
+  status: 'កំពុងខ្ចី' | 'បានសង' | 'ហួសកំណត់';
+}
 
+// 12. Leave Request (ស្នើសុំច្បាប់ឈប់សម្រាក)
+export interface LeaveRequest {
+  id: string;
+  requesterId: string; // teacherId or studentId
+  requesterRole: 'teacher' | 'student';
+  leaveType: 'ឈឺ' | 'ធុរៈផ្ទាល់ខ្លួន' | 'សម្រាលកូន' | 'ផ្សេងៗ';
+  startDate: string;
+  endDate: string;
+  reason: string;
+  status: 'រង់ចាំអនុម័ត' | 'អនុម័ត' | 'បដិសេធ';
+  approvedBy?: string; // adminId
+}
+
+// 13. Parent Messaging (ផ្ញើសារជូនអាណាព្យាបាល)
+export interface ParentMessage {
+  id: string;
+  studentId: string;
+  parentId: string; // Optional, usually derived from student
+  subject: string;
+  message: string;
+  sentDate: string;
+  sentBy: string; // teacherId or adminId
+  status: 'បានផ្ញើ' | 'មិនទាន់ផ្ញើ' | 'បានអាន';
+}

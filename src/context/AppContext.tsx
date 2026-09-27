@@ -25,7 +25,11 @@ import type {
   SchoolAsset,
   AuditLog,
   AuditActionType,
-  DataBackupSettings
+  DataBackupSettings,
+  LibraryBook,
+  LibraryBorrowRecord,
+  LeaveRequest,
+  ParentMessage
 } from '../types';
 
 export const defaultSchoolInfo: SchoolInfo = {
@@ -62,7 +66,11 @@ import {
   initialFinancialTransactions,
   initialSchoolAssets,
   initialAuditLogs,
-  initialBackupSettings
+  initialBackupSettings,
+  initialLibraryBooks,
+  initialLibraryBorrowRecords,
+  initialLeaveRequests,
+  initialParentMessages
 } from '../mockData/initialData';
 
 const translations: Record<Language, Record<string, string>> = {
@@ -225,6 +233,20 @@ export interface AppContextType {
   backupSettings: DataBackupSettings;
   updateBackupSettings: (updated: Partial<DataBackupSettings>) => void;
   triggerManualBackup: () => void;
+
+  // 11. Library Management
+  libraryBooks: LibraryBook[];
+  setLibraryBooks: React.Dispatch<React.SetStateAction<LibraryBook[]>>;
+  libraryBorrowRecords: LibraryBorrowRecord[];
+  setLibraryBorrowRecords: React.Dispatch<React.SetStateAction<LibraryBorrowRecord[]>>;
+  
+  // 12. Leave Requests
+  leaveRequests: LeaveRequest[];
+  setLeaveRequests: React.Dispatch<React.SetStateAction<LeaveRequest[]>>;
+  
+  // 13. Parent Messages
+  parentMessages: ParentMessage[];
+  setParentMessages: React.Dispatch<React.SetStateAction<ParentMessage[]>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -307,6 +329,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Security & Audit Log state
   const [auditLogs, setAuditLogs] = useLocalStorage<AuditLog[]>('audit_logs', initialAuditLogs);
   const [backupSettings, setBackupSettings] = useLocalStorage<DataBackupSettings>('backup_settings', initialBackupSettings);
+
+  const [libraryBooks, setLibraryBooks] = useLocalStorage<LibraryBook[]>('library_books', initialLibraryBooks);
+  const [libraryBorrowRecords, setLibraryBorrowRecords] = useLocalStorage<LibraryBorrowRecord[]>('library_borrow_records', initialLibraryBorrowRecords);
+  const [leaveRequests, setLeaveRequests] = useLocalStorage<LeaveRequest[]>('leave_requests', initialLeaveRequests);
+  const [parentMessages, setParentMessages] = useLocalStorage<ParentMessage[]>('parent_messages', initialParentMessages);
 
   const logActivity = (
     action: AuditActionType,
@@ -1066,7 +1093,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       logActivity,
       backupSettings,
       updateBackupSettings,
-      triggerManualBackup
+      triggerManualBackup,
+      libraryBooks,
+      setLibraryBooks,
+      libraryBorrowRecords,
+      setLibraryBorrowRecords,
+      leaveRequests,
+      setLeaveRequests,
+      parentMessages,
+      setParentMessages
     }}>
       {children}
     </AppContext.Provider>

@@ -2378,4 +2378,42 @@ export const initialBackupSettings: import('../types').DataBackupSettings = {
   passwordHashAlgorithm: 'bcrypt (Salt 12)'
 };
 
+export const initialLibraryBooks: import('../types').LibraryBook[] = [
+  {
+    id: 'lb_1',
+    bookCode: 'B-001',
+    title: 'ភាសាខ្មែរ ថ្នាក់ទី១',
+    author: 'ក្រសួងអប់រំ យុវជន និងកីឡា',
+    category: 'សៀវភៅសិក្សាគោល',
+    totalCopies: 50,
+    availableCopies: 45
+  },
+  {
+    id: 'lb_2',
+    bookCode: 'B-002',
+    title: 'រឿងនិទានប្រជាប្រិយខ្មែរ',
+    author: 'ពុទ្ធសាសនបណ្ឌិត្យ',
+    category: 'រឿងនិទាន',
+    totalCopies: 10,
+    availableCopies: 10
+  }
+];
+
+export const initialLibraryBorrowRecords: import('../types').LibraryBorrowRecord[] = [];
+
+export const initialLeaveRequests: import('../types').LeaveRequest[] = [
+  {
+    id: 'lr_1',
+    requesterId: 't_1',
+    requesterRole: 'teacher',
+    leaveType: 'ឈឺ',
+    startDate: '2026-10-01',
+    endDate: '2026-10-02',
+    reason: 'គ្រុនក្តៅ',
+    status: 'រង់ចាំអនុម័ត'
+  }
+];
+
+export const initialParentMessages: import('../types').ParentMessage[] = [];
+
 
