@@ -120,7 +120,7 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
-interface AppContextType {
+export interface AppContextType {
   userRole: UserRole;
   setUserRole: (role: UserRole) => void;
   language: Language;

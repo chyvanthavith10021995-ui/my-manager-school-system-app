@@ -8,8 +8,7 @@ import {
   X,
   CheckCircle2,
   LogIn,
-  KeyRound,
-  Building2
+  KeyRound
 } from 'lucide-react';
 
 interface QuickLoginModalProps {

@@ -52,8 +52,6 @@ export const PrintHeader: React.FC<PrintHeaderProps> = ({
 };
 
 export const PrintFooter: React.FC = () => {
-  const { schoolInfo } = useApp();
-
   return (
     <div className="hidden print:block mt-8 pt-4 text-xs font-siemreap text-black">
       <div className="flex justify-between items-start text-center">
